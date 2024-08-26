@@ -19,6 +19,7 @@ public class text {
             cart1.addItem(4, "Dog food", 23, 1);
             cart1.printList();
 
+            test1();
         }
     }
 
