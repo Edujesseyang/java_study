@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ShoppingCart {
     public Item[] cart;
 
-    public ShoppingCart(int space){
+    public ShoppingCart(int space) {
         cart = new Item[space];
     }
 
@@ -32,6 +32,9 @@ public class ShoppingCart {
                     this.cart[i] = item;
                     break;
                 }
+            }
+            if(cart[cart.length - 1] != null){
+                System.out.println("Shopping Cart is full!");
             }
         } else {
             System.out.println("item undefined!");

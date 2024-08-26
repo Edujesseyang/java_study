@@ -16,6 +16,7 @@ public class text {
             cart1.addItem(item1);
             cart1.addItem(item2);
             cart1.addItem(item3);
+            cart1.addItem(4, "Dog food", 23, 1);
             cart1.printList();
 
         }
