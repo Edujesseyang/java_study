@@ -29,11 +29,12 @@ public class ShoppingCart {
         if (item != null) {
             for (int i = 0; i < this.cart.length; i++) {
                 if (cart[i] == null) {
+                    item.id = i + 1;
                     this.cart[i] = item;
                     break;
                 }
             }
-            if(cart[cart.length - 1] != null){
+            if (cart[cart.length - 1] != null) {
                 System.out.println("Shopping Cart is full!");
             }
         } else {
