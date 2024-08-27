@@ -18,5 +18,24 @@ public class movieTest {
         for (Movie m : moviesList) {
             m.printInfo();
         }
+        System.out.println("The best movie is: ");
+        Movie bestMovie = findBest(moviesList);
+        bestMovie.printInfo();
+
+    }
+
+    public static Movie findBest(ArrayList<Movie> movieList) {
+        Double maxScore = movieList.get(0).getScore();
+        for (Movie movie : movieList) {
+            if (movie.getScore() > maxScore) {
+                maxScore = movie.getScore();
+            }
+        }
+        for (Movie m : movieList) {
+            if (m.getScore().equals(maxScore)) {
+                return m;
+            }
+        }
+        return movieList.get(0);
     }
 }
