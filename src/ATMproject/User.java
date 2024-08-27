@@ -48,15 +48,21 @@ public class User {
         this.balance = balance;
     }
 
-    public Boolean checkPassword(String input) {
-        return this.passWord.equals(input);
-    }
-
-    public Boolean equals(User thatUser) {
-        return this.userName.equals(thatUser.getUserName());
-    }
-
     public void printInfo() {
-        System.out.println("User: " + this.userName + "(" + this.userID + ")" + "\nBalance: " + this.balance);
+        System.out.println("User: " + this.userName + "(ID: " + this.userID + ")" + "\nBalance: " + this.balance);
+        System.out.print("password: ");
+        for (int i = 0; i < this.passWord.length(); i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
+
+    public void deposit(double deposit) {
+        this.balance += deposit;
+    }
+
+    public void withdraw(double withdraw) {
+        this.balance -= withdraw;
     }
 }
