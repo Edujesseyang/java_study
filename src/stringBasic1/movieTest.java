@@ -1,6 +1,7 @@
 package src.stringBasic1;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class movieTest {
     public static void main(String[] args) {
@@ -22,6 +23,12 @@ public class movieTest {
         Movie bestMovie = findBest(moviesList);
         bestMovie.printInfo();
 
+        try (Scanner sc = new Scanner(System.in)) {
+            Movie myMovie = findMovie(moviesList, sc);
+            if (myMovie != null) {
+                myMovie.printInfo();
+            }
+        }
     }
 
     public static Movie findBest(ArrayList<Movie> movieList) {
@@ -38,4 +45,21 @@ public class movieTest {
         }
         return movieList.get(0);
     }
+
+    public static Movie findMovie(ArrayList<Movie> moviesList, Scanner sc) {
+        while (true) {
+            System.out.println("Enter the name of the movie(-1 to exit): ");
+            String name = sc.nextLine();
+            if (name.equals("-1")) {
+                return null;
+            }
+            for (Movie m : moviesList) {
+                if (m.getName().equals(name)) {
+                    return m;
+                }
+            }
+            System.out.println("Not found");
+        }
+    }
+
 }
