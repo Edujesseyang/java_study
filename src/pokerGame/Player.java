@@ -15,12 +15,12 @@ public class Player {
         this.name = name;
     }
 
-    public void pickCard(String newCard) {
-        this.handCards.add(newCard);
-    }
-
     public ArrayList<String> getHandCards() {
         return handCards;
+    }
+
+    public void pickCard(String newCard) {
+        this.handCards.add(newCard);
     }
 
     public void throwCard(String cards) {
