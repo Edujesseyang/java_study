@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ATMSystem {
+    // universe user pool
     static ArrayList<User> userPool = new ArrayList<>();
 
+    // main method
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean stillUsing = true;
@@ -21,6 +23,11 @@ public class ATMSystem {
         }
     }
 
+    /**
+     * @param sc : scanner object
+     * @return string option number
+     * Usage: main menu, give user a general guide
+     */
     public static String mainMenu(Scanner sc) {
         System.out.println("************************************");
         System.out.println("Welcome to ATM, Select the options:");
@@ -46,6 +53,12 @@ public class ATMSystem {
         }
     }
 
+    /**
+     * @param pool : user pool from the universal scope
+     * @param sc : scanner object
+     * @return user object
+     * Usage: allow user to log in certain user object
+     */
     public static User login(ArrayList<User> pool, Scanner sc) {
         while (true) {
             System.out.println("Enter your username: ");
@@ -66,6 +79,11 @@ public class ATMSystem {
         }
     }
 
+    /**
+     * @param pool : user pool from the universal scope
+     * @param sc : scanner object
+     * Usage: allow user to sign up a new account(User object), then append that object to user pool.
+     */
     public static void signUp(ArrayList<User> pool, Scanner sc) {
         boolean validUserName = false;
         boolean validUserPassword = false;
@@ -109,6 +127,11 @@ public class ATMSystem {
         pool.add(new User(newUserName, userId, newUserPassword, 0.0));
     }
 
+    /**
+     * @param user : user object
+     * @param sc : scanner object
+     * Usage: display user the user menu after log in, allow user to choose listed options to update the user object.
+     */
     public static void loginMenu(User user, Scanner sc) {
         if (user == null) {
             System.out.println("User not found!");

@@ -6,6 +6,8 @@ public class User {
     private String passWord;
     private Double balance;
 
+
+     // constructors
     public User() {
     }
 
@@ -16,6 +18,7 @@ public class User {
         this.balance = balance;
     }
 
+    // getters
     public Double getBalance() {
         return balance;
     }
@@ -32,6 +35,7 @@ public class User {
         return userName;
     }
 
+    // setters
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -48,6 +52,7 @@ public class User {
         this.balance = balance;
     }
 
+    // printer
     public void printInfo() {
         System.out.println("User: " + this.userName + "(ID: " + this.userID + ")" + "\nBalance: " + this.balance);
         System.out.print("password: ");
@@ -57,7 +62,7 @@ public class User {
         System.out.println();
     }
 
-
+    // update balance
     public void deposit(double deposit) {
         this.balance += deposit;
     }
