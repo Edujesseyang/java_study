@@ -7,16 +7,13 @@ public class Student extends People {
 
     public Student() {
         super(); // it will automatically be here, no matter you write it or not
+        studentCount++;
     }
 
     public Student(String name, int age, char sex, double grade) {
-/*       this.name = name;  way1: assign param one by one
-         this.age = age;
-         this.sex = sex;
-*/
-        super(name,age,sex); // way2: better way to call the father's constructor
+        super(name, age, sex); // call the father's constructor, only at the first line.
         this.grade = grade;
-
+        studentCount++;
     }
 
     public double getGrade() {
@@ -25,5 +22,15 @@ public class Student extends People {
 
     public void setGrade(double grade) {
         this.grade = grade;
+    }
+
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("Grade: " + this.grade);
+    }
+
+    public static int getCount() {
+        return studentCount;
     }
 }

@@ -10,6 +10,18 @@ public class People {
         peopleCount++;
     }
 
+    public People(String name) {
+        this(name, 0, ' '); // brother constructor. only at the first line.
+    }
+
+    public People(int age) {
+        this("Unknown", age, ' ');
+    }
+
+    public People(char sex) {
+        this("unknown", 0, sex);
+    }
+
     public People(String name, int age, char sex) {
         this.name = name;
         this.age = age;
@@ -43,5 +55,11 @@ public class People {
 
     public static int getCount() {
         return peopleCount;
+    }
+
+    public void printInfo() {
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+        System.out.println("Sex: " + this.sex);
     }
 }

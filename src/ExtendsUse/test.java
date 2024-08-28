@@ -9,7 +9,6 @@ public class test {
         Teacher t1 = new Teacher("Shi", 69, 'M', 300000);
         Student s2 = new Student();
         CSTeacher c1 = new CSTeacher();
-        c1.initName();
 
         System.out.println(People.getCount());
         System.out.println(c1.getSuperName());
@@ -19,6 +18,19 @@ public class test {
         System.out.println();
         c1.teaching();
         System.out.println();
+
+        System.out.println(People.getCount());
+
+        People p2 = new People("Wang");
+        p2.printInfo();
+        c1.printInfo();
+        CSTeacher c2 = new CSTeacher("Lee", 43, 'M', 15000, "Java");
+        c2.printInfo();
+
+        System.out.println("People : " + People.getCount());
+        System.out.println("Student: " + Student.getCount());
+        System.out.println("Teacher: " + Teacher.getCount());
+        System.out.println("CS teacher : " + CSTeacher.getCount());
 
 
     }

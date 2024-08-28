@@ -6,13 +6,14 @@ public class Teacher extends People {
     public static int teacherCount = 0;
 
     public Teacher() {
-
+        // super();  <-- we don't need to write this.
+        teacherCount++;
     }
 
     public Teacher(String name, int age, char sex, double salary) {
-        super(name, age, sex);  // way2 : use father's constructor
+        super(name, age, sex);  //  use father's constructor
         this.salary = salary;
-
+        teacherCount++;
     }
 
     public double getSalary() {
@@ -24,8 +25,18 @@ public class Teacher extends People {
     }
 
 
-    public void teaching(){
+    public void teaching() {
         System.out.println("Show PPT...");
         System.out.println("Answer questions...");
+    }
+
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("Salary: " + this.salary);
+    }
+
+    public static int getCount(){
+        return teacherCount;
     }
 }
