@@ -90,9 +90,13 @@ public class ATMSystem {
             newUserPassword = sc.nextLine();
             if (newUserPassword.length() < 6) {
                 System.out.println("password is has to be more than 6 digits");
-                continue;
+            } else {
+                System.out.println("Confirm password: ");
+                String confirmPassword = sc.nextLine();
+                if (confirmPassword.equals(newUserPassword)) {
+                    validUserPassword = true;
+                }
             }
-            validUserPassword = true;
         }
         Integer userId = (int) (Math.random() * (999999 - 100000 + 1)) + 100000;
         for (User user : pool) {
