@@ -32,6 +32,11 @@ public class test {
         System.out.println("Teacher: " + Teacher.getCount());
         System.out.println("CS teacher : " + CSTeacher.getCount());
 
+        President president = President.getInstance();
+        president.printInfo();
 
+        President president1 = President.getInstance();
+        System.out.println(president); // they have same address, no matter how many object we try to create, there is only one exists.
+        System.out.println(president1);
     }
 }
