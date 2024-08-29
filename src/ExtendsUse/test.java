@@ -30,7 +30,7 @@ public class test {
         System.out.println("People : " + People.getCount());
         System.out.println("Student: " + Student.getCount());
         System.out.println("Teacher: " + Teacher.getCount());
-        System.out.println("CS teacher : " + CSTeacher.getCount());
+        System.out.println("CS teacher: " + CSTeacher.getCount());
 
         President president = President.getInstance();
         president.printInfo();
