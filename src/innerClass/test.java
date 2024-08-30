@@ -1,5 +1,7 @@
 package src.innerClass;
 
+import src.innerClass.anonymousInnerClass.Animal;
+
 public class test {
     public static void main(String[] args) {
 
@@ -36,6 +38,7 @@ public class test {
         Dealer d = new Dealer();
         d.setName("Jesse");
         System.out.println("Dealer is " + d.getName());
+
 
 
     }
