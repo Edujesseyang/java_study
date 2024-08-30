@@ -10,7 +10,7 @@ public class test {
 
         m2.getMsg(); // call another default method who is using the private method.
 
-        bluprint1.staticMethod(); // can access the static method in this way.
+        bluprint.staticMethod(); // can access the static method in this way.
     }
 
 

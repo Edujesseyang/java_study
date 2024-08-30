@@ -1,6 +1,6 @@
 package src.interfaceBasic.JDK8NewFeature;
 
-public interface bluprint1 {
+public interface bluprint {
 
     // before JDK8, you cannot write method body in an interface.
     void someMethod();
