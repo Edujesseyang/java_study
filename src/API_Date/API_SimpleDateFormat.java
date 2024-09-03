@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class API_SimpleDateFormat {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException, InterruptedException {
         // Usage: formating date into a human-readable format
         Date d1 = new Date();
         SimpleDateFormat format1 = new SimpleDateFormat("MM/dd/yyyy EEE \na HH : mm : ss");
@@ -29,13 +29,30 @@ public class API_SimpleDateFormat {
 
         // parse string with time and date:
         String time_str = "2021年08月06日 11:11:11";
+        System.out.println("Current time: " + time_str);
+
         SimpleDateFormat format3 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-        Date date = null;
-        try {
-            date = format3.parse(time_str);
-            System.out.println(date);
-        } catch (ParseException e) {
-            e.printStackTrace(); //FIXME
-        }
+        Date date = format3.parse(time_str);
+
+        long time = date.getTime();
+        date.setTime(time + (120L * 1000)); // add L to make sure all numbers calculate as long types.
+
+        System.out.println("After 2 minutes: " + format3.format(date));
+
+
+        // user the checkTime method;
+        String schoolTime = "09/03/2024 10:30:00";
+        String myTime = "09/03/2024 10:31:00";
+        System.out.println("Am I on time? " + checkOnTime(schoolTime, myTime));
+
+    }
+
+    public static boolean checkOnTime(String targetTime, String userTime) throws ParseException {
+        SimpleDateFormat timeForm = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Date targetDate = timeForm.parse(targetTime);
+        long targetMil = targetDate.getTime();
+        Date userDate = timeForm.parse(userTime);
+        long userMil = userDate.getTime();
+        return targetMil >= userMil;
     }
 }
