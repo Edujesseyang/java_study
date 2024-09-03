@@ -3,7 +3,7 @@ package src.API_Date;
 import java.util.Calendar;
 import java.util.Date;
 
-public class API_Calendar {
+public class Calendar_demo {
     public static void main(String[] args) {
         // The class calendar is an abstract class. You cannot implement it directly.
         // use getInstance() to create object

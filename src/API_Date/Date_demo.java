@@ -2,7 +2,7 @@ package src.API_Date;
 
 import java.util.Date;
 
-public class API_Date {
+public class Date_demo {
     public static void main(String[] args) {
         // 1. use Date constructor;
         Date d1 = new Date(); // get the current date and time;

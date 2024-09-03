@@ -1,6 +1,6 @@
 package src.API_StringBuilder;
 
-public class test {
+public class StringBuilder_demo {
     public static void main(String[] args) {
         // This class has no-param constructor
         StringBuilder str1 = new StringBuilder();

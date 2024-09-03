@@ -1,6 +1,6 @@
 package src.API_Math;
 
-public class test {
+public class Math_demo {
     public static void main(String[] args) {
         // absolute value:
         int abs1 = Math.abs(-10);

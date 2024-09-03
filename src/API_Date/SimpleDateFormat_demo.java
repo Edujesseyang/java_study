@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class API_SimpleDateFormat {
+public class SimpleDateFormat_demo {
     public static void main(String[] args) throws ParseException, InterruptedException {
         // Usage: formating date into a human-readable format
         Date d1 = new Date();

@@ -3,7 +3,7 @@ package src.API_System;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class test {
+public class System_demo {
     public static void main(String[] args) {
 
         // terminate JVM : System.exit(code);   code = 0: normal terminating   code != 0: error
