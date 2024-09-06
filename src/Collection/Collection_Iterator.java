@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 public class Collection_Iterator {
     public static void main(String[] args) {
@@ -79,6 +80,36 @@ public class Collection_Iterator {
         Double[] myDb2 = {2.3, 2.5, 5.6, 2.1, 9.6};
         Double[] copyDb2 = arrayCopy(myDb2);
         System.out.println(Arrays.toString(copyDb2));
+
+        // lambda iterate, use forEach method:
+        Collection<String> c3 = new ArrayList<>(Arrays.asList("str1", "str2", "str3"));
+        c3.forEach(s -> System.out.print(s + " "));
+        System.out.println();// lambda
+        // it same as:
+        c3.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.print(s + " ");
+            }
+        });  // above is the old style.
+        System.out.println();
+
+        // use Arrays.asList(elements):
+        ArrayList<Integer> myIntegers = new ArrayList<>(Arrays.asList(1, 2, 3));
+        myIntegers.forEach(System.out::println);  // a way to print each a line
+
+        // forEach to append:
+        Collection<Double> myDoubles = new ArrayList<>(Arrays.asList(2.3, 3.6, 2.3, 2.1));
+        Collection<Double> newDoubles = new ArrayList<>();
+        myDoubles.forEach(newDoubles::add);
+        newDoubles.forEach(System.out::print);
+        // use addAll for the same result:
+        Collection<Double> newNewDouble = new ArrayList<>();
+        newNewDouble.addAll(newDoubles);
+        newNewDouble.forEach(System.out::println);
+        // better way:
+        Collection newNewNewDouble = new ArrayList(newNewDouble);
+        newNewNewDouble.forEach(System.out::println);
 
 
     }
