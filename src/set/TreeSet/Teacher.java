@@ -2,7 +2,7 @@ package src.set.TreeSet;
 
 import java.util.Objects;
 
-public class Teacher {
+public class Teacher implements Comparable<Teacher> {
     private String name;
     private int age;
     private char sex;
@@ -64,8 +64,20 @@ public class Teacher {
         return Objects.hash(this.name, this.age, this.sex);
     }
 
+    // override the compareTo method:
     @Override
-    public void Comparable(){}
-
-
+    public int compareTo(Teacher o) {
+        // return positive int, this > o
+        // return negative int, this < o
+        // return 0, equal, TreeSet will threaten them as same elements, then delete the second one.
+        return (this.age - o.age) >= 0 ? 1 : -1;  // this will sort from small to large.
+        // return (o.age - this.age);  // this will sort set from large to small
+        // it can be:
+        // if(this.age < o.age){
+        //     return -1;
+        // } else if (this.age >= o.age) {
+        //     return 1;
+        // }
+        // If this method returns 0; it will delete the one of the elements, do not let it returns 0;
+    }
 }
