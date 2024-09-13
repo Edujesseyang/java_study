@@ -1,7 +1,9 @@
 package src.stream;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -117,6 +119,42 @@ public class filter_demo {
             }
             return false;
         }).forEach(e -> System.out.print(e + ", "));
+
+
+        // .limit(int)   and    .skip(int)
+        List<Integer> il1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        System.out.print("After skip 2 :");  // only show 3,4,5,6.   skip 1, 2
+        il1.stream().filter(e -> e > 0).skip(2).forEach(e -> System.out.print(e + ", "));
+        System.out.println();
+        System.out.print("After limit 2 :");  // only show 1, 2.
+        il1.stream().filter(e -> e > 0).limit(2).forEach(e -> System.out.print(e + ", "));
+        System.out.println();
+
+
+        // .map()
+        List<String> sl1 = new ArrayList<>(Arrays.asList("Jesse", "Lucky", "Sushi"));
+        sl1.stream().map(new Function<String, String>() {
+            @Override
+            public String apply(String s) {
+                return s + " is happy! ";
+            }
+        }).forEach(System.out::println);
+        // .map() with lambda:
+        sl1.stream().map(s -> s + " is sad!! ").forEach(System.out::println);
+
+        // use map() to convert all names to be student objects:
+        // way 1, use toList() method.
+        List<Student> studentsList = sl1.stream().map(Student::new).toList();  // way 1 :(best,only for JAVA 16 and newer)
+        System.out.println(studentsList);
+        // For Java versions before 16, use .collect(Collectors.toList():
+        List<Student> studentsList1 = sl1.stream().map(Student::new).collect(Collectors.toList());  // For Java 8-15
+        System.out.println(studentsList1);
+        // way 2, use forEach method.
+        List<Student> studentsList2 = new ArrayList<>();
+        sl1.forEach(e -> studentsList2.add(new Student(e)));  // way 2 (w/o using stream and map):
+        System.out.println(studentsList2);
+        // way 3: build Student, then use them, then release, no storing them.
+        sl1.stream().map(Student::new).forEach(System.out::println);  // way 3 ( w/o store objects)
 
 
     }
