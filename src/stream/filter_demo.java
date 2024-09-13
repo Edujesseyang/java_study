@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class filter_demo {
     public static void main(String[] args) {
-
+        // if we want to make a filter to get rid of some elements:
         // without using stream :
         List<String> testArr = new ArrayList<>();
         Collections.addAll(testArr, "ABC", "BBC", "CNN", "AKA", "AW");
@@ -144,9 +144,11 @@ public class filter_demo {
 
         // use map() to convert all names to be student objects:
         // way 1, use toList() method.
+        // *** .toList() return a immutable list, elements cannot be added, delete, or change ***
         List<Student> studentsList = sl1.stream().map(Student::new).toList();  // way 1 :(best,only for JAVA 16 and newer)
         System.out.println(studentsList);
         // For Java versions before 16, use .collect(Collectors.toList():
+        // *** .Collector.toList() return a mutable list, elements can be added, delete, or change ***
         List<Student> studentsList1 = sl1.stream().map(Student::new).collect(Collectors.toList());  // For Java 8-15
         System.out.println(studentsList1);
         // way 2, use forEach method.
@@ -156,6 +158,68 @@ public class filter_demo {
         // way 3: build Student, then use them, then release, no storing them.
         sl1.stream().map(Student::new).forEach(System.out::println);  // way 3 ( w/o store objects)
 
+
+        // concat streams:
+        List<String> myList = new ArrayList<>(Arrays.asList("Jesse", "Sushi", "Lucky", "Noodle", "Klee", "Cookie"));
+        Stream<String> s1 = myList.stream().filter(e -> e.startsWith("J") || e.startsWith("S"));
+        Stream<String> s2 = myList.stream().filter(e -> e.startsWith("K"));
+        Stream<String> s3 = Stream.concat(s1, s2);
+        s3.forEach(e -> System.out.print(e + ", "));
+        System.out.println();
+        // concat different types:
+        List<Integer> myInt = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+        Stream<String> s6 = myList.stream().filter(e -> e.length() < 5);
+        Stream<Integer> s4 = myInt.stream().filter(e -> e % 2 == 0 && e != 2);
+        Stream<Object> s5 = Stream.concat(s6, s4);
+        s5.forEach(e -> System.out.print(e + ", "));
+        System.out.println();
+
+
+        // collect and collector: toList()
+        List<Integer> intList1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        List<Integer> primeIn20 = intList1.stream().filter(e -> {
+            if (e < 2) {
+                return false;
+            }
+            for (int i = 2; i <= Math.sqrt(e); i++) {
+                if (e % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }).collect(Collectors.toList());  // (mutable) JAVA 16 and below, (immutable) .toList() for JAVA 16 and above.
+        System.out.println(primeIn20);
+        // toArray()
+        Object[] prime20 = intList1.stream().filter(e -> {  // it's an object array b/c <Integer> is not a strong restrict.
+            if (e < 2) {
+                return false;
+            }
+            for (int i = 2; i <= Math.sqrt(e); i++) {
+                if (e % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }).toArray();
+        System.out.println(Arrays.toString(prime20));
+        // if you want an Integer[]
+        Integer[] intPrime20 = intList1.stream().filter(e -> {  // it's an object array b/c <Integer> is not a strong restrict.
+            if (e < 2) {
+                return false;
+            }
+            for (int i = 2; i <= Math.sqrt(e); i++) {
+                if (e % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }).toArray(Integer[]::new);  // lambda reference;
+        System.out.println(Arrays.toString(intPrime20));
+
+
+        // Extra: finding prime nums:
+        List<Integer> primeIn40 = checkPrimes(40);
+        System.out.println(primeIn40);
 
     }
 
@@ -190,6 +254,29 @@ public class filter_demo {
         for (String s : array) {
             if (s.length() == length) {
                 result.add(s);
+            }
+        }
+        return result;
+    }
+
+    public static List<Integer> checkPrimes(int max) {
+        boolean[] primeList = new boolean[max + 1];
+        Arrays.fill(primeList, true);  // use Arrays.fill(target, value) to assign all elements are true;
+        primeList[0] = false;
+        primeList[1] = false;
+
+        for (int i = 2; i * i <= max; i++) {
+            if (primeList[i]) {
+                for (int j = i * i; j <= max; j += i) {
+                    primeList[j] = false;
+                }
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < primeList.length; i++) {
+            if (primeList[i]) {
+                result.add(i);
             }
         }
         return result;
