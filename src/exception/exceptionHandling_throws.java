@@ -10,7 +10,7 @@ public class exceptionHandling_throws {
     // this method will still pop error if there is one, but it won't pop error before it running.
     // normally throws master class - Exception.
     public static void main(String[] args) throws Exception { // throw out error to upper level
-        String target = "06/26-2023 22:15:23";
+        String target = "06/26/2023 22:15:23";
         Date result = parseTime(target);
         System.out.println(result);
     }
