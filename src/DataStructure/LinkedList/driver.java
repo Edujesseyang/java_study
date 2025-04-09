@@ -10,7 +10,7 @@ public class driver {
         test.add(5);
         System.out.println("Length = " + test.getLength());
         test.print();
-        System.out.println("Index of 5 = ");
+        System.out.println("Index of 5 =  ");
         System.out.println("Deleted 3: " + test.delete(3));
         System.out.println("Length = " + test.getLength());
         test.print();
