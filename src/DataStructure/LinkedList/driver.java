@@ -8,7 +8,18 @@ public class driver {
         test.add(3);
         test.add(4);
         test.add(5);
-
+        System.out.println("Length = " + test.getLength());
         test.print();
+        System.out.println("Index of 5 = ");
+        System.out.println("Deleted 3: " + test.delete(3));
+        System.out.println("Length = " + test.getLength());
+        test.print();
+        System.out.println("Deleted 5: " + test.delete(5));
+        System.out.println("Length = " + test.getLength());
+        test.print();
+        System.out.println("Deleted 1: " + test.delete(1));
+        System.out.println("Length = " + test.getLength());
+        test.print();
+
     }
 }
