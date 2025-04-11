@@ -2,6 +2,7 @@ package src.DataStructure.LinkedList;
 
 public class driver {
     public static void main(String[] args) {
+        // test constructor and add
         LinkList<Integer> test = new LinkList<>(Integer.class);
         System.out.println("******** Integer test ********");
         System.out.println("=== Add Test ===");
@@ -12,6 +13,8 @@ public class driver {
         test.add(4);
         System.out.println("LinkList constructed successfully");
         test.print(); // 0, 1, 2, 3, 4
+
+        // test delete and indexOf
         System.out.println("Length = " + test.getLength());
         System.out.println("Index of 4 = " + test.indexOf(4));
         System.out.println("\nDeleted 3: " + test.delete(3));
@@ -24,12 +27,12 @@ public class driver {
         System.out.println("Length = " + test.getLength());
         System.out.println("Index of 5 = " + test.indexOf(5));
 
-
         System.out.println("\nDeleted 1: " + test.delete(1));
         test.print();
         System.out.println("Length = " + test.getLength());
         System.out.println("Index of 1 = " + test.indexOf(1));
 
+        // refill elements
         System.out.println("\nAdd: 0 , 1, 2, 3, 4");
         test.add(0);
         test.add(1);
@@ -37,6 +40,8 @@ public class driver {
         test.add(3);
         test.add(4);
         test.print();
+
+        // test print index, insert by index, and removeAt by index
         System.out.println("\nPrint index pairs ...");
         test.printIndex();
         System.out.println("\nInsert: index = 4, value = 200");
@@ -45,6 +50,20 @@ public class driver {
         System.out.println("\nRemove: index = 4");
         test.removeAt(4);
         test.printIndex();
+        test.print();
+
+        // test removeAll(val)
+        System.out.println("After remove all 2");
+        test.removeAll(2);
+        test.print();
+        System.out.println("After remove all 4");
+        test.removeAll(4);
+        test.print();
+
+        // test toString()
+        String testString = test.convertToString();
+        System.out.println("toString: " + testString);
+
 
         LinkList<String> list = new LinkList<>(String.class);
         System.out.println("\n\n******** String test ********");
@@ -90,5 +109,9 @@ public class driver {
         System.out.println("\n=== toArray Test ===");
         String[] arr = list.toArray();
         System.out.println("Array: " + java.util.Arrays.toString(arr));  // [First, Apple, Cherry, Last]
+
+        // test toString()
+        String listString = list.convertToString();
+        System.out.println("toString: " + listString);
     }
 }

@@ -153,6 +153,20 @@ public class LinkList<T> {
         reIndexing(index);
     }
 
+    void removeAll(T val) {
+        Node<T> dummy = new Node<>();
+        dummy.next = head;
+        Node<T> current = dummy;
+        while (current.next != null) {
+            if (current.next.getValue().equals(val)) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+        head = dummy.next;
+    }
+
     int indexOf(T val) {
         Node<T> current = head;
         while (current != null) {
@@ -167,11 +181,11 @@ public class LinkList<T> {
     void print() {
         Node<T> current = head;
         System.out.print("{");
-        while (current != null) {
+        while (current.next != null) {
             System.out.print(current.getValue() + ", ");
             current = current.next;
         }
-        System.out.println("}");
+        System.out.println(current.getValue() + "}");
     }
 
     void printIndex() {
@@ -209,5 +223,19 @@ public class LinkList<T> {
             current = current.next;
         }
         return arr;
+    }
+
+    String convertToString() {
+        StringBuilder sb = new StringBuilder("[");
+        Node<T> current = head;
+        while (current != null) {
+            sb.append(current.getValue().toString());
+            if (current.next != null) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
