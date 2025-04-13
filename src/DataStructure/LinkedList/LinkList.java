@@ -238,4 +238,16 @@ public class LinkList<T> {
         sb.append("]");
         return sb.toString();
     }
+
+    void reverseList() {
+        Node<T> prev = null;
+        Node<T> current = head;
+        while (current != null) {
+            Node<T> temp = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp;
+        }
+        this.head = prev;
+    }
 }

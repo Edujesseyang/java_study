@@ -41,6 +41,11 @@ public class driver {
         test.add(4);
         test.print();
 
+        // test reverse
+        System.out.println("\nTest reverseList: ");
+        test.reverseList();
+        test.print();
+
         // test print index, insert by index, and removeAt by index
         System.out.println("\nPrint index pairs ...");
         test.printIndex();
