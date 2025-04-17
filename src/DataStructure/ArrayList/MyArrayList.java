@@ -6,6 +6,7 @@ public class MyArrayList<T> {
     private T[] baseArr;
     private int size;
     private int length;
+    private Class<T> clazz;
 
     @SuppressWarnings("unchecked")
     public MyArrayList(Class<T> clazz) {
@@ -20,7 +21,7 @@ public class MyArrayList<T> {
 
     public void add(T val) {
         if (length == size) {
-            resize(T.class);
+            resize();
         }
 
         if (length == 0) {
@@ -44,11 +45,11 @@ public class MyArrayList<T> {
 
     public T elementAt(int index) {
 
-
+        return null;
     }
 
     @SuppressWarnings("unchecked")
-    private void resize(Class<T> clazz) {
+    private void resize() {
         this.size *= 2;
         T[] newArr = (T[]) java.lang.reflect.Array.newInstance(clazz, size);
         newArr = Arrays.copyOf(baseArr, size / 2);
