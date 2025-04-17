@@ -1,6 +1,6 @@
 package src.DataStructure.LinkedList;
 
-public class driver {
+class driver {
     public static void main(String[] args) {
         // test constructor and add
         LinkList<Integer> test = new LinkList<>(Integer.class);

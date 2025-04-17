@@ -2,55 +2,75 @@ package src.DataStructure.ArrayList;
 
 import java.util.Arrays;
 
-public class MyArrayList<T> {
+class MyArrayList<T> {
     private T[] baseArr;
     private int size;
     private int length;
+    private final Class<T> clazz;
 
     @SuppressWarnings("unchecked")
-    public MyArrayList(Class<T> clazz) {
+    MyArrayList(Class<T> clazz) {
         this.size = 20;
         this.length = 0;
+        this.clazz = clazz;
         baseArr = (T[]) java.lang.reflect.Array.newInstance(clazz, size);
     }
 
-    public int length() {
+    int length() {
         return this.length;
     }
 
-    public void add(T val) {
+    void add(T val) {
         if (length == size) {
-            resize(T.class);
+            resize();
         }
-
-        if (length == 0) {
-            baseArr[0] = val;
-        } else {
-            baseArr[length - 1] = val;
-        }
+        baseArr[length] = val;
         length++;
     }
 
-    public boolean contains(T val) {
+    boolean contains(T val) {
+        for (int i = 0; i < length; i++) {
 
+            if (val == null ? baseArr[i] == null : baseArr[i].equals(val)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean delete(T val) {
+        int i = 0;
+        while (i < length) {
+            if (val == null ? baseArr[i] == null : baseArr[i].equals(val)) {
+                remove(i);
+                return true;
+            }
+            i++;
+        }
 
         return false;
     }
 
-    public boolean delete(T val) {
-
-        return false;
+    void remove(int index) {
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException("Index of of Boundary.");
+        }
+        for (int i = index; i < length - 1; i++) {
+            baseArr[i] = baseArr[i + 1];
+        }
+        baseArr[--length] = null;
     }
 
-    public T elementAt(int index) {
-
-
+    T elementAt(int index) {
+        return baseArr[index];
     }
 
-    @SuppressWarnings("unchecked")
-    private void resize(Class<T> clazz) {
+    private void resize() {
         this.size *= 2;
-        T[] newArr = (T[]) java.lang.reflect.Array.newInstance(clazz, size);
-        newArr = Arrays.copyOf(baseArr, size / 2);
+        baseArr = Arrays.copyOf(baseArr, size / 2);
+    }
+
+    private T[] toArray() {
+        return baseArr;
     }
 }

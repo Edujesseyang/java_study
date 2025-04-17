@@ -2,7 +2,7 @@ package src.DataStructure.LinkedList;
 
 import java.lang.reflect.Array;
 
-public class LinkList<T> {
+class LinkList<T> {
     private static class Node<T> {
         private T value;
         private Node<T> next;
