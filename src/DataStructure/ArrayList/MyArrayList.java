@@ -1,5 +1,7 @@
 package src.DataStructure.ArrayList;
 
+import java.util.Arrays;
+
 public class MyArrayList<T> {
     private T[] baseArr;
     private int size;
@@ -17,7 +19,16 @@ public class MyArrayList<T> {
     }
 
     public void add(T val) {
+        if (length == size) {
+            resize(T.class);
+        }
 
+        if (length == 0) {
+            baseArr[0] = val;
+        } else {
+            baseArr[length - 1] = val;
+        }
+        length++;
     }
 
     public boolean contains(T val) {
@@ -31,9 +42,15 @@ public class MyArrayList<T> {
         return false;
     }
 
-    public T elementAt(int index){
+    public T elementAt(int index) {
 
 
     }
 
+    @SuppressWarnings("unchecked")
+    private void resize(Class<T> clazz) {
+        this.size *= 2;
+        T[] newArr = (T[]) java.lang.reflect.Array.newInstance(clazz, size);
+        newArr = Arrays.copyOf(baseArr, size / 2);
+    }
 }
