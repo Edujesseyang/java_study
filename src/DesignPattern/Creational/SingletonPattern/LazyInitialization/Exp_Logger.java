@@ -2,7 +2,7 @@ package src.DesignPattern.Creational.SingletonPattern.LazyInitialization;
 
 import java.util.ArrayList;
 
-public class Exp_Logger {
+class Exp_Logger {
     // 私有本类变量
     private static volatile Exp_Logger instance;
     private static ArrayList<String> logHistory;

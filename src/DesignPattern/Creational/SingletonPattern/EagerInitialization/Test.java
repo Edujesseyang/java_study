@@ -1,7 +1,5 @@
 package src.DesignPattern.Creational.SingletonPattern.EagerInitialization;
 
-import src.DesignPattern.Creational.SingletonPattern.LazyInitialization.Exp_Logger;
-
 class Test {
     public static void main(String[] args) {
         EagerSingleton instance = EagerSingleton.INSTANCE;
