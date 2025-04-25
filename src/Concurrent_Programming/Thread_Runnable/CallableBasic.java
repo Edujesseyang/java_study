@@ -1,4 +1,4 @@
-package src.Concurrent_Programming.Thread;
+package src.Concurrent_Programming.Thread_Runnable;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

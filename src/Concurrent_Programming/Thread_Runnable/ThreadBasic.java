@@ -1,4 +1,4 @@
-package src.Concurrent_Programming.Thread;
+package src.Concurrent_Programming.Thread_Runnable;
 
 class ThreadBasic {
     public static void main(String[] args) {
